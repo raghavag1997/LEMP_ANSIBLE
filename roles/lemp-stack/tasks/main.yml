@@ -1,0 +1,25 @@
+---
+# tasks file for lemp-stack
+#
+- name: Updating the Package in Ubuntu
+  apt:
+     upgrade: yes
+     update_cache: yes
+
+- name: Installing the required packages For LEMP Stack
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ packages }}"
+  
+- name: Copying the Configuration file for nginx to run PHP
+  template:
+    src: nginx.j2
+    dest: /etc/nginx/sites-available/default
+  notify: Reload the nginx
+  
+- name: Copying Test php file for testing
+  copy:
+     src: info.php
+     dest: /var/www/html/
+

@@ -1,0 +1,8 @@
+---
+# vars file for lemp-stack
+packages:
+   - nginx
+   - mysql-server
+   - php-fpm
+   - php-mysql
+

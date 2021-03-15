@@ -1,0 +1,7 @@
+---
+# handlers file for lemp-stack
+- name: Reload the nginx
+  service:
+    name: nginx
+    state: restarted
+
